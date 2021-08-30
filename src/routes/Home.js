@@ -15,9 +15,9 @@ function Home() {
       <h1>To Do</h1>
       <form onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onChange} />
-        <ul></ul>
         <button>Add</button>
       </form>
+      <ul></ul>
     </>
   );
 }
