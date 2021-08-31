@@ -14,7 +14,7 @@ const deleteToDoAction = (id) => {
 const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
-      return [{ text: action.text, id: Date.now(), ...state }];
+      return [{ text: action.text, id: Date.now() }, ...state];
     case DELETE:
       return state.filter((toDo) => toDo.id !== action.id);
     default:
@@ -24,6 +24,7 @@ const reducer = (state = [], action) => {
 
 const store = createStore(reducer);
 
+/* action함수를 따로 export하지 않고 한 변수 안에 넣어서 한번에 export한다 */
 export const actionCreator = {
   addToDoAction,
   deleteToDoAction,

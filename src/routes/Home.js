@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { actionCreator } from "../store";
+import ToDo from "../components/ToDo";
+
 /*<></>는 여러게의 element를 return 할때 쓸 수 있는 투명한 div와 같다 */
 /* onChange는 input안의 값이 변경될때 실행 */
+/* connect로 부터 받은 오브젝트 파라미터 { toDos, addToDo } */
 function Home({ toDos, addToDo }) {
   const [text, setText] = useState("");
   function onChange(event) {
@@ -20,7 +23,11 @@ function Home({ toDos, addToDo }) {
         <input type="text" value={text} onChange={onChange} />
         <button>Add</button>
       </form>
-      <ul></ul>
+      <ul>
+        {toDos.map((toDo) => (
+          <ToDo {...toDo} key={toDo.id} />
+        ))}
+      </ul>
     </>
   );
 }
