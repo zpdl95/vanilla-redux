@@ -8,14 +8,14 @@ import ToDo from "../components/ToDo";
 /* connect로 부터 받은 오브젝트 파라미터 { toDos, addToDo } */
 function Home({ toDos, addToDo }) {
   const [text, setText] = useState("");
-  function onChange(event) {
+  const onChange = (event) => {
     setText(event.target.value);
-  }
-  function onSubmit(event) {
+  };
+  const onSubmit = (event) => {
     event.preventDefault();
     addToDo(text);
     setText("");
-  }
+  };
   return (
     <>
       <h1>To Do</h1>
@@ -32,16 +32,16 @@ function Home({ toDos, addToDo }) {
   );
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   /* 무조건 오브젝트로 리턴해야함 */
   return { toDos: state };
-}
+};
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
     addToDo: (text) => dispatch(actionCreator.addToDoAction(text)),
   };
-}
+};
 
 /* connect함수를 써서 store에 있는 state를 Home함수에 연결 */
 /* getCurrentState함수의 return값은 Home이 받는 props에 추가된다 */
