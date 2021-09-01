@@ -7,9 +7,8 @@ import { actionCreator } from "../store";
 function ToDo({ text, id, onBtnClick }) {
   return (
     <li>
-      <Link to={`/${id}`}>
-        {text} <button onClick={onBtnClick}>❌</button>
-      </Link>
+      <Link to={`/${id}`}></Link>
+      {text} <button onClick={onBtnClick}>❌</button>
     </li>
   );
 }
