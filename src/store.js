@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, createReducer } from "@reduxjs/toolkit";
 
 /* @reduxjs/toolkit 사용하기 전 코드 */
 // const ADD = "ADD";
@@ -20,16 +20,28 @@ import { createAction } from "@reduxjs/toolkit";
 const addToDoAction = createAction("ADD");
 const deleteToDoAction = createAction("DELETE");
 
-const reducer = (state = [], action) => {
-  switch (action.type) {
-    case addToDoAction.type:
-      return [{ text: action.payload, id: Date.now() }, ...state];
-    case deleteToDoAction.type:
-      return state.filter((toDo) => toDo.id !== action.payload);
-    default:
-      return state;
-  }
-};
+/* @reduxjs/toolkit 사용하기 전 코드 */
+// const reducer = (state = [], action) => {
+//   switch (action.type) {
+//     case addToDoAction.type:
+//       return [{ text: action.payload, id: Date.now() }, ...state];
+//     case deleteToDoAction.type:
+//       return state.filter((toDo) => toDo.id !== action.payload);
+//     default:
+//       return state;
+//   }
+// };
+
+/* 기본reducer와 동일하게 첫번째 argument는 초기값을 넣어준다 */
+/* state를 새로 만들 필요없이 변화시켜도 된다 */
+/* 그리고 state를 변화시키지 않고 새로 만들어 return해도 된다 */
+const reducer = createReducer([], {
+  [addToDoAction]: (state, action) => {
+    state.push({ text: action.payload, id: Date.now() });
+  },
+  [deleteToDoAction]: (state, action) =>
+    state.filter((toDo) => toDo.id !== action.payload),
+});
 
 const store = createStore(reducer);
 
