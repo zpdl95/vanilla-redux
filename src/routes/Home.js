@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { actionCreator } from "../store";
+import { addToDoAction } from "../store";
 import ToDo from "../components/ToDo";
 
 /*<></>는 여러게의 element를 return 할때 쓸 수 있는 투명한 div와 같다 */
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToDo: (text) => dispatch(actionCreator.addToDoAction(text)),
+    addToDo: (text) => dispatch(addToDoAction(text)),
   };
 };
 
