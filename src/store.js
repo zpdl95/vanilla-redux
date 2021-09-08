@@ -63,7 +63,7 @@ const toDos = createSlice({
 });
 
 // const store = createStore(reducer);
-/* store에 확장팩을 사용할 수 있도록 하는 함수 */
+/* 브라우저에서 redux-devtool을 사용할 수 있게 해줌 */
 /* reducer, middleware, devTools등등 여러가지를 추가로 사용가능 */
 const store = configureStore({ reducer: toDos.reducer });
 
